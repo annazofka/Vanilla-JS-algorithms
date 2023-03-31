@@ -1,0 +1,11 @@
+{
+  "name": "react-prework",
+  "version": "1.0.0",
+  "description": "project for practice js",
+  "main": "app.js",
+  "scripts": {
+    "start": "npx serve . -p 3000"
+  },
+  "author": "Szymon Oleszek",
+  "license": "ISC"
+}

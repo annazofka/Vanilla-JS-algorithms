@@ -1,0 +1,35 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React prework</title>
+    <link rel="stylesheet" href="https://unpkg.com/mocha/mocha.css" />
+    <script src="https://unpkg.com/chai/chai.js"></script>
+    <script src="https://unpkg.com/mocha/mocha.js"></script>
+  </head>
+  <body>
+    <h1 style="margin: 20px; text-align: center; font-family: sans-serif">
+      React Prework
+    </h1>
+    <!-- 
+      **********************************
+      !!! DO NOT TOUCH ANYTHING HERE !!!
+      **********************************
+     -->
+    <div id="mocha"></div>
+    <script>
+      var assert = chai.assert;
+    </script>
+    <script class="mocha-init">
+      mocha.setup("bdd");
+      mocha.checkLeaks();
+    </script>
+    <script src="./app.js"></script>
+    <script src="./solution.js"></script>
+    <script src="test.index.js"></script>
+    <script class="mocha-exec">
+      mocha.run();
+    </script>
+  </body>
+</html>
