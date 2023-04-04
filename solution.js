@@ -71,3 +71,116 @@ function solution_getAdults() {
 function solution_getJuniors() {
   return workers.filter((worker) => worker.seniority === "junior");
 }
+
+/**
+ * Zadanie 7
+ */
+
+function solution_getAmountBasedOnType(seniority) {
+  return workers.reduce((sum, worker) => {
+    if (worker.seniority === seniority) {
+      sum += 1;
+    }
+
+    return sum;
+  }, 0);
+}
+
+/**
+ * Zadanie 8
+ */
+
+function solution_getSumOfSallariesBasedOnType(seniority) {
+  return workers.reduce((sum, worker) => {
+    if (worker.seniority === seniority) {
+      sum += worker.salary;
+    }
+
+    return sum;
+  }, 0);
+}
+
+/**
+ * Zadanie 9
+ */
+
+function solution_assignToProjects() {
+  return workers.map((worker) => {
+    let project = "internal project";
+
+    if (worker.seniority === "regular") {
+      project = "XYZ";
+    } else if (worker.seniority === "senior") {
+      project = "ZYX";
+    }
+
+    return { ...worker, project };
+  });
+}
+
+/**
+ * Zadanie 10
+ */
+
+const solution_addNewNumber = (newNumber) => {
+  return [...numbers, newNumber];
+};
+
+/**
+ * Zadanie 11
+ */
+
+const solution_removeNumber = (numberToRemove) => {
+  return numbers.filter((number) => number !== numberToRemove);
+};
+
+/**
+ * Zadanie 12
+ */
+
+const solution_addNewTodo = (newTodo) => {
+  return [...todos, newTodo];
+};
+
+/**
+ * Zadanie 13
+ */
+
+const solution_removeTodo = (todoIdToDelete) => {
+  return todos.filter((todo) => todo.id !== todoIdToDelete);
+};
+
+/**
+ * Zadanie 14
+ */
+
+const solution_TableRow = (props) => {
+  const { todo } = props;
+
+  return `<tr>
+    <td>${todo.name}</td>
+    <td>${todo.status}</td>
+    <td>${todo.priority}</td>
+  </tr>
+  `;
+};
+
+/**
+ * Zadanie 15
+ *
+ */
+
+function solution_Table() {
+  const rows = todos.map((todo) => {
+    const props = { todo };
+
+    return TableRow(props);
+  });
+
+  return `<table>
+    <tbody>
+      ${rows.join("")}
+    </tbody>
+  </table>
+  `;
+}
