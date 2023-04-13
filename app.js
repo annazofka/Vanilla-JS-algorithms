@@ -499,59 +499,6 @@ function getAmountBasedOnType(seniority) {}
 function getSumOfSallariesBasedOnType(seniority) {}
 
 /**
- * Zadanie 8 Suma wypłat dla pracowników określonego typu
- *
- * Stwórz funkcje getSumOfSallariesBasedOnType która na podstawie tablicy obiektów workers (z zadania 4 powyżej)
- * oraz parametru seniority (parametr funkcji) zwróci sumę wynagrodzeń personelu danego typu
- *
- *
- * przykładowe dane wejściowe (tablica workers)
- *
- *
- * const workers = [
- *      {
- *          name: 'John',
- *          seniority: 'junior',
- *          salary: 4000
- *      },
- *      {
- *          name: 'Jane',
- *          seniority: 'junior',
- *          salary: 4500
- *      },
- *      {
- *          name: 'Jerry',
- *          seniority: 'senior',
- *          salary: 15000
- *      }
- * ]
- *
- *
- * w zmiennej juniors po wywołaniu Twojej funkcji powinni znajdować się workerzy których pole seniority = 'junior'
- *
- * const juniorsSallary = getSumOfSallariesBasedOnType('junior');
- *
- * console.log(juniorsSallary); // 8500
- *
- * const regularsSallary = getSumOfSallariesBasedOnType('regular');
- *
- * console.log(regularsSallary); // 0
- *
- * const seniorsSallary = getSumOfSallariesBasedOnType('senior');
- *
- * console.log(seniorsSallary); // 15000
- *
- *
- * wymagania
- * - rozwiązanie powinno być zapisane w ciele (wewnątrz) funkcji getSumOfSallariesBasedOnType
- * - użyj metody dostępnej na tablicach .reduce
- */
-
-/* MIEJSCE NA TWÓJ KOD 👇 */
-
-function getSumOfSallariesBasedOnType(seniority) {}
-
-/**
  * Zadanie 9 Przypisanie pracownika do projektu
  *
  * Stwórz funkcje assignToProjects która na podstawie tablicy obiektów workers (z zadania 4 powyżej)
