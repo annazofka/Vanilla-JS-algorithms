@@ -99,8 +99,13 @@ const numbers = [2, 12, 6, 4, 7, 11];
 /* MIEJSCE NA TWÓJ KOD 👇 */
 
 function getSquaredNumbers() {
-  console.log(numbers);
-}
+  const squaredNumbers = numbers.map((number, index, array) => {
+    return number * number;
+
+  });
+  return squaredNumbers;
+};
+
 
 /**
  * Zadanie 2 Tablica z długościami stringów
@@ -130,8 +135,11 @@ const phrases = ["react", "trelemorele", "frontend", "angular", "js", ""];
 
 /* MIEJSCE NA TWÓJ KOD 👇 */
 
-const getLenghtsOfPhrases = () => {
-  console.log(phrases);
+function getLenghtsOfPhrases() {
+  const phraseLength = phrases.map((phrase) => {
+    return phrase.length;
+  });
+  return phraseLength;
 };
 
 /**
@@ -140,7 +148,8 @@ const getLenghtsOfPhrases = () => {
  * Stwórz funkcje verfiyUsers która na podstawie tablicy obiektów users stworzy nową tablicę
  * obiektów które w swojej strukturze będą zawierały dodatkowe pole "isAdult"
  *
- * nowe pole isAdult będzie ustawiane na podstawie wieku usera (age - inne istniejące pole w obiekcie user)
+ * nowe pole isAdult będzie ustawiane na podstawie wieku usera 
+ * (age - inne istniejące pole w obiekcie user)
  *
  * przykładowy obiekt user:
  *
@@ -154,8 +163,8 @@ const getLenghtsOfPhrases = () => {
  *
  * --------------------------------
  *
- * żeby dodać nowe pole do tego obiektu należy odwołać się do tego obiektu i następnie do przyszłego pola po
- * kropce (patrz poniżej)
+ * żeby dodać nowe pole do tego obiektu należy odwołać się do tego obiektu 
+ * i następnie do przyszłego pola po kropce (patrz poniżej)
  *
  * --------------------------------
  *
@@ -168,7 +177,8 @@ const getLenghtsOfPhrases = () => {
  * to samo będziesz musiał/musiała zrobić ze wszystkimi obiektami w tablicy
  * na podstawie wieku usera (age) - możliwe że będą potrzebne if-y
  *
- * przykładowe dane wejściowe (tablica users) i wyjściowe (nowa tablica z userami którzy mają pole isAdult)
+ * przykładowe dane wejściowe (tablica users) 
+ * i wyjściowe (nowa tablica z userami którzy mają pole isAdult)
  *
  *
  * const users = [
@@ -182,7 +192,8 @@ const getLenghtsOfPhrases = () => {
  *  }
  * ];
  *
- * w zmiennej verifiedUsers po wywołaniu Twojej funkcji powinny znajdować się obiekty z polem isAdult oraz wartością boolowską ustawioną
+ * w zmiennej verifiedUsers po wywołaniu Twojej funkcji powinny znajdować się 
+ * obiekty z polem isAdult oraz wartością boolowską ustawioną
  * na podstawie wieku (age)
  *
  * const verifiedUsers = twojaFunckja();
@@ -220,8 +231,38 @@ const users = [
 
 /* MIEJSCE NA TWÓJ KOD 👇 */
 
+// const verfiyUsers = () => {
+//   return users.map((user) => {
+//     if(user.age >=18) {
+//       return {name: user.name, age: user.age, isAdult: true}
+//     } else {
+//       return {name: user.name, age: user.age, isAdult: false}
+//     }
+//   });
+// };
+
+// const verfiyUsers = () => {
+//   return users.map((user) => {
+//     if(user.age >=18) {
+//       return {
+//         ...user,
+//         isAdult: true,
+//       }
+//     } else {
+//       return {...user,
+//          isAdult: false,
+//         }
+//     }
+//   });
+// };
+
 const verfiyUsers = () => {
-  console.log(users);
+  return users.map((user) => {
+    return {
+      ...user,
+      isAdult: user.age >= 18,
+    }
+  });
 };
 
 /**
@@ -296,19 +337,30 @@ const workers = [
 ];
 
 function processSalaries() {
-  console.log(workers);
+  return workers.map((worker) => {
+    if (worker.seniority === 'junior') {
+      return { name: worker.name, seniority: worker.seniority, salary: worker.salary * 1.5 };
+    } else if (worker.seniority === 'regular') {
+      return { name: worker.name, seniority: worker.seniority, salary: worker.salary * 1.3 };
+    } else if (worker.seniority === 'senior') {
+      return { name: worker.name, seniority: worker.seniority, salary: worker.salary * 1.15 };
+    } else {
+      return worker;
+    }
+  });
 }
+
 
 /**
  * Zadanie 5 Filtrowanie tablicy userów - wyciągnij userów którzy są pełnoletni (age >= 18)
  *
- * Stwórz funkcje getAdults która na podstawie tablicy obiektów users (z zadania 3 powyżej) stworzy nową tablicę
- * obiektów które będą spełniały następujący warunek
+ * Stwórz funkcje getAdults która na podstawie tablicy obiektów users (z zadania 3 powyżej) 
+ * stworzy nową tablicę obiektów które będą spełniały następujący warunek
  *
  * wiek usera (age) ma być większy bądź równy 18
  *
  * przykładowe dane wejściowe (tablica users)
- *
+
  *
  * const users = [
  *  {
@@ -322,7 +374,8 @@ function processSalaries() {
  * ];
  *
  *
- * w zmiennej adultUsers po wywołaniu Twojej funkcji powinni znajdować się userzy którzy mają pole age większe bądź równe 18
+ * w zmiennej adultUsers po wywołaniu Twojej funkcji powinni znajdować się 
+ * userzy którzy mają pole age większe bądź równe 18
  *
  * const adultUsers = twojaFunckja();
  *
@@ -340,9 +393,42 @@ function processSalaries() {
  * - użyj metody dostępnej na tablicach .filter
  */
 
+
 function getAdults() {
-  console.log(users);
+  const adultUsers = users.filter(user => user.age >= 18);
+  return adultUsers;
 }
+
+// destrukturyzacja:
+
+// function addTwoNumbers(numbers) {
+//   return numbers.number1 + numbers.number2
+// }
+
+// const numbersKtorePrzekazeDoFunkcji = {
+//   number1: 5,
+//   number2: 10
+// }
+
+// addTwoNumbers(numbersKtorePrzekazeDoFunkcji)
+
+
+function addTwoNumbers({number1, number2}) {
+  return number1 + number2
+}
+function addTwoNumbers1(numbers) {
+  const {number1, number2} = numbers
+  return number1 + number2
+}
+
+const numbersKtorePrzekazeDoFunkcji = {
+  number1: 5,
+  number2: 10
+}
+
+addTwoNumbers(numbersKtorePrzekazeDoFunkcji)
+
+
 
 /**
  * Zadanie 6 Filtrowanie tablicy workerów - wyciągnij workerów których seniority = 'junior'
@@ -389,8 +475,12 @@ function getAdults() {
  */
 
 function getJuniors() {
+  return workers.filter(worker => worker.seniority === "junior");
+
   console.log(workers);
 }
+
+
 
 /**
  * Zadanie 7 Liczba prawcowników danego typu
@@ -421,7 +511,8 @@ function getJuniors() {
  * ]
  *
  *
- * w zmiennej juniors po wywołaniu Twojej funkcji powinni znajdować się workerzy których pole seniority = 'junior'
+ * w zmiennej juniors po wywołaniu Twojej funkcji powinni znajdować się workerzy 
+ * których pole seniority = 'junior'
  *
  * const numberOfJuniors = getAmountBasedOnType('junior');
  *
@@ -443,7 +534,17 @@ function getJuniors() {
 
 /* MIEJSCE NA TWÓJ KOD 👇 */
 
-function getAmountBasedOnType(seniority) {}
+
+function getAmountBasedOnType(seniority) {
+  return workers.reduce((acc, worker) => {
+    if (worker.seniority === seniority) {
+      acc++;
+    }
+    return acc;
+  }, 0)
+}
+
+
 
 /**
  * Zadanie 8 Suma wypłat dla pracowników określonego typu
@@ -496,7 +597,14 @@ function getAmountBasedOnType(seniority) {}
 
 /* MIEJSCE NA TWÓJ KOD 👇 */
 
-function getSumOfSallariesBasedOnType(seniority) {}
+function getSumOfSallariesBasedOnType(seniority) {
+  return workers.reduce((total, worker) => {
+    if (worker.seniority === seniority) {
+      total += worker.salary;
+    }
+    return total;
+  }, 0);
+};
 
 /**
  * Zadanie 9 Przypisanie pracownika do projektu
@@ -571,7 +679,19 @@ function getSumOfSallariesBasedOnType(seniority) {}
 
 /* MIEJSCE NA TWÓJ KOD 👇 */
 
-function assignToProjects() {}
+function assignToProjects() {
+  return workers.map((worker) => {
+    if (worker.seniority === 'junior') {
+      return { ...worker, project: 'internal project' }
+    } else if (worker.seniority === 'regular') {
+      return { ...worker, project: 'XYZ' }
+    } else if (worker.seniority === 'senior') {
+      return { ...worker, project: 'ZYX' }
+    } else {
+      return worker;
+    }
+  })
+}
 
 /**
  * Zadanie 10 Dodawanie nowych liczb do tablicy
@@ -598,7 +718,7 @@ function assignToProjects() {}
 
 /* MIEJSCE NA TWÓJ KOD 👇 */
 
-const addNewNumber = (newNumber) => {};
+const addNewNumber = (newNumber) => { };
 
 /**
  * Zadanie 11 Usuwanie liczb z tablicy
@@ -624,7 +744,15 @@ const addNewNumber = (newNumber) => {};
 
 /* MIEJSCE NA TWÓJ KOD 👇 */
 
-const removeNumber = (numberToRemove) => {};
+const removeNumber = (numberToRemove) => {
+  return numbers.filter((number) => {
+    if (numberToRemove !== number) {
+      return true;
+    } else {
+      return false;
+    }
+  })
+};
 
 /**
  * Zadanie 12 Dodawanie nowego zadania
@@ -711,7 +839,7 @@ const todos = [
 
 /* MIEJSCE NA TWÓJ KOD 👇 */
 
-const addNewTodo = (newTodo) => {};
+const addNewTodo = (newTodo) => { };
 
 /**
  * Zadanie 13 Usuwanie zadania
@@ -761,7 +889,9 @@ const addNewTodo = (newTodo) => {};
 
 /* MIEJSCE NA TWÓJ KOD 👇 */
 
-const removeTodo = (todoIdToDelete) => {};
+const removeTodo = (todoIdToDelete) => {
+  return todos.filter(todo => todoIdToDelete !== todo.id)
+};
 
 /**
  * Zadanie 14 Tworzenie funkcji tworzącej HTMLa - tworzenie komponentu "prawie reactowego"
