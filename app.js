@@ -696,8 +696,9 @@ function assignToProjects() {
 /**
  * Zadanie 10 Dodawanie nowych liczb do tablicy
  *
- * Stwórz funkcję addNewNumber która na podstawie tablicy z liczbami z zadania 1 (numbers) stworzy i zwróci nową tablicę
- * z porzednimi liczbami oraz nową liczbą przekazaną w parametrze funkcji
+ * Stwórz funkcję addNewNumber która na podstawie tablicy z liczbami z zadania 1 (numbers) 
+ * stworzy i zwróci nową tablicę z porzednimi liczbami 
+ * oraz nową liczbą przekazaną w parametrze funkcji
  *
  * np.
  *
@@ -718,7 +719,9 @@ function assignToProjects() {
 
 /* MIEJSCE NA TWÓJ KOD 👇 */
 
-const addNewNumber = (newNumber) => { };
+const addNewNumber = (newNumber) => {
+  return [...numbers, newNumber]
+};
 
 /**
  * Zadanie 11 Usuwanie liczb z tablicy
@@ -816,7 +819,8 @@ const removeNumber = (numberToRemove) => {
  *
  * wymagania
  * - rozwiązanie powinno być zapisane w ciele (wewnątrz) funkcji addNewTodo
- * - użyj spread operatora do stworzenia nowej tablicy na podstawie starej + nowy obiekt (newTodo) z parametru
+ * - użyj spread operatora do stworzenia nowej tablicy na podstawie starej + nowy
+ *  obiekt (newTodo) z parametru
  *
  *
  * LINK DO DOKUMENTACJI SPREAD OPERATORA:
@@ -839,7 +843,9 @@ const todos = [
 
 /* MIEJSCE NA TWÓJ KOD 👇 */
 
-const addNewTodo = (newTodo) => { };
+const addNewTodo = (newTodo) => {
+  return [{...todos}, newTodo]
+ };
 
 /**
  * Zadanie 13 Usuwanie zadania
@@ -897,7 +903,8 @@ const removeTodo = (todoIdToDelete) => {
  * Zadanie 14 Tworzenie funkcji tworzącej HTMLa - tworzenie komponentu "prawie reactowego"
  *
  * Stwórz funkcje TableRow (pisane upperCasem intencjonalnie) która zwróci element html-owy
- * napisany w stringu (template strings) - elementem niech będzie tag jeden tr z trzema tagami td w środku
+ * napisany w stringu (template strings) - elementem niech będzie 
+ * tag jeden tr z trzema tagami td w środku
  *
  * przykład html pisanego w template stringu:
  *
@@ -926,15 +933,16 @@ const removeTodo = (todoIdToDelete) => {
  *
  * funkcja/komponent którą stworzysz będzie miała taki parametr (zagnieżdzony obiekt todo w obiekcie props)
  *
- * główna struktura htmlowa (<tr></tr>) będzie napisana Twoim zadaniem będzie stworzenie w środku
- * 3 dodatkowych elmentów td (<td></td>) z danymi w środku (np. <td>${dane}</td>)
+ * główna struktura htmlowa (<tr></tr>) będzie napisana 
+ * Twoim zadaniem będzie stworzenie w środku 3 dodatkowych elmentów 
+ * td (<td></td>) z danymi w środku (np. <td>${dane}</td>)
  *
  * niech pierwszy td zawiera pole name z obiektu todo
  * niech drugi td zawiera pole status z obiektu todo
  * niech trzeci td zawiera pole priority z obiektu todo
  *
- * przykładowa funkcja/komponent BlogPost która przyjmuje obiekt props a w środku obiekt blog z dwoma polami
- * title oraz content
+ * przykładowa funkcja/komponent BlogPost która przyjmuje obiekt props a w środku 
+ * obiekt blog z dwoma polami title oraz content
  *
  * function BlogPost(props){
  *  const title = props.post.title;
@@ -972,8 +980,12 @@ const removeTodo = (todoIdToDelete) => {
  */
 
 const TableRow = (props) => {
+  const todo = props.todo;
+
   return `<tr>
-    MIEJSCE NA TWÓJ KOD USUŃ TEN TEKST ZASTĘPUJĄC GO ODPOWIENIM KODEM
+    <td>${todo.name}</td>
+    <td>${todo.status}</td>
+    <td>${todo.priority}</td>
   </tr>
   `;
 };
@@ -982,23 +994,26 @@ const TableRow = (props) => {
  * Zadanie 15 Składanie komponentów w jeden większy komponent
  *
  * Stwórz funkcje Table (pisane upperCasem intencjonalnie) która zwróci element html-owy
- * napisany w stringu (template strings) - element jaki ma zwracać to tabelka htmlowa składająca się z następujących tagów:
+ * napisany w stringu (template strings)
+ *  - element jaki ma zwracać to tabelka htmlowa składająca się z następujących tagów:
  *
  * - table
  * - tbody
  * - tr
  * - td
  *
- * UWAGA do stworzenia elementów tr oraz td użyj funkcji/komponentu TableRow który zwraca takie tagi htmlowe
- * pamiętaj że funkcjia/komponent TableRow przyjmuje parametr props - jako parametru będziesz musiał/musiała użyć
+ * UWAGA do stworzenia elementów tr oraz td użyj funkcji/komponentu TableRow który 
+ * zwraca takie tagi htmlowe. Pamiętaj że funkcja/komponent TableRow 
+ * przyjmuje parametr props - jako parametru będziesz musiał/musiała użyć
  * elementu z tablicy todos
  *
  * tzn.
  *
- * przeiteruj się po tablicy todos (todos.map()) i wywołaj funkcje/komponent TableRow dla każdego todosa
+ * przeiteruj się po tablicy todos (todos.map()) i wywołaj funkcje/komponent 
+ * TableRow dla każdego todosa
  *
- * ALE UWAŻAJ nie będziesz mógł/mogła bezpośrednio przekazać iterowanego elementu jako argument musisz go otoczyć
- * w nawiazy klamrowe żeby stworzyć obiekt props
+ * ALE UWAŻAJ nie będziesz mógł/mogła bezpośrednio przekazać iterowanego elementu 
+ * jako argument musisz go otoczyć w nawiazy klamrowe żeby stworzyć obiekt props
  *
  * patrz na przykład dla blog postów które wykorzystują funkcje/komponent BlogPost:
  *
@@ -1045,8 +1060,8 @@ const TableRow = (props) => {
  *
  *
  *
- * powyższy przykład niech Ci posłuży do wykonania zadania - w praktyce masz przetworzyć ten przykład zgodnie
- * z treścią zadania:
+ * powyższy przykład niech Ci posłuży do wykonania zadania - w praktyce masz przetworzyć 
+ * ten przykład zgodnie z treścią zadania:
  *
  * 1) przeiteruj się po todosach żeby stworzyć strukture HTMLową
  * 2) użyj funkcji/komponentu TableRow
@@ -1056,10 +1071,16 @@ const TableRow = (props) => {
  */
 
 function Table() {
-  console.log(todos);
+
+    const rows =  todos.map((todo) => {
+      const props = { todo }
+      return TableRow(props)
+    })
 
   return `<table>
-      MIEJSCE NA TWÓJ KOD USUŃ TEN TEKST ZASTĘPUJĄC GO ODPOWIENIM KODEM
+    <tbody>
+      ${rows.join("")}
+    </tbody>
   </table>
   `;
 }
